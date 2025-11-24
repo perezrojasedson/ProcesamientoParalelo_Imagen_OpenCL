@@ -1,0 +1,29 @@
+# Archivos del sistema
+*.DS_Store
+*.swp
+*.swo
+
+# Archivos de CLion y JetBrains
+.idea/
+*.iml
+
+# Archivos de CMake
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+Makefile
+/bin/
+
+# Archivos compilados
+*.exe
+*.o
+*.obj
+*.dll
+*.so
+*.a
+*.lib
+
+# Carpeta de salida de imágenes (no subimos resultados)
+img_output/*.png
