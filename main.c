@@ -12,7 +12,7 @@
 
 // Función para leer el archivo del kernel (.cl)
 char* read_kernel_source(const char* filename, size_t* length) {
-    FILE* file = fopen(filename, "r");
+    FILE* file = fopen(filename, "rb");
     if (!file) {
         fprintf(stderr, "ERROR: No se pudo abrir el archivo del kernel: %s\n", filename);
         return NULL;
@@ -95,6 +95,9 @@ int main() {
     // Inicialización OpenCL
     clGetPlatformIDs(1, &platform_id, NULL);
     clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_GPU, 1, &device_id, NULL);
+    char device_name[128];
+    clGetDeviceInfo(device_id, CL_DEVICE_NAME, 128, device_name, NULL);
+    printf("-> Usando Dispositivo: %s\n", device_name);
 
     context = clCreateContext(NULL, 1, &device_id, NULL, NULL, &ret);
     // Nota: clCreateCommandQueue está deprecado en versiones nuevas, se usa WithProperties, pero usaremos la básica por compatibilidad si es 1.2
